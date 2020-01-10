@@ -5,6 +5,7 @@ copy_data() {
     if [ ! -d /data/python ]; then
         echo "Copy data"
         cp -R /root/python /data/
+        cp -R /config/octoprint/users.yaml /data/users.yaml
     fi
 }
 
