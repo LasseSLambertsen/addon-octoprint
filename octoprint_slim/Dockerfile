@@ -3,7 +3,7 @@ FROM $BUILD_FROM
 
 ENV LANG C.UTF-8
 
-ENV OCTOPRINT_VERSION=1.3.11
+ENV OCTOPRINT_VERSION=1.3.12
 # To have Python packages persistently installed.
 ENV PYTHONPATH=/data/python
 ENV PATH=${PATH}:/data/python/bin
