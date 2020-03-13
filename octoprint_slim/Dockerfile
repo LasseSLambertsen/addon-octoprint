@@ -39,6 +39,13 @@ COPY run.sh /
 RUN chmod a+x /run.sh
 COPY supervisord.conf /etc/supervisord.conf
 
+# Build arguments
+ARG BUILD_ARCH
+ARG BUILD_DATE
+ARG BUILD_REF
+ARG BUILD_VERSION
+
+# Labels
 LABEL \
     io.hass.name="OctoPrint (Slim)" \
     io.hass.description="A web frontend for controlling 3D printers." \
