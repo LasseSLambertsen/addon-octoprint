@@ -1,25 +1,30 @@
-ARG BUILD_FROM
+ARG BUILD_FROM=hassioaddons/base:7.0.3
+# hadolint ignore=DL3006
 FROM $BUILD_FROM
 
+# Basic environment parameters
 ENV LANG C.UTF-8
+ENV OCTOPRINT_VERSION=1.4.0
 
-ENV OCTOPRINT_VERSION=1.3.12
 # To have Python packages persistently installed.
 ENV PYTHONPATH=/data/python
 ENV PATH=${PATH}:/data/python/bin
 ENV PYTHONUSERBASE=/data/python
 
+# Copy root filesystem
+COPY rootfs /
+
 # Change to tmp folder for all installs, easier to clean
 WORKDIR /tmp
 
 # Install requirements for add-on
-RUN apk add --no-cache jq supervisor py-pip \
+RUN apk add --no-cache jq py-pip \
     && \
     # Get code for installation, install.
     wget -qO- https://github.com/foosel/OctoPrint/archive/${OCTOPRINT_VERSION}.tar.gz | tar xz \
     && \
     # Compile and install
-    apk add --no-cache --virtual build-dependencies \
+    apk add --no-cache --virtual .build-dependencies \
     build-base python-dev linux-headers \
     && \
     # Octoprint
@@ -31,13 +36,8 @@ RUN apk add --no-cache jq supervisor py-pip \
     && cp -R /data/python /root/ \
     && \
     # Cleanup
-    apk del --no-cache build-dependencies \
+    apk del --no-cache .build-dependencies \
     && rm -rf /tmp
-
-# Copy data for add-on
-COPY run.sh /
-RUN chmod a+x /run.sh
-COPY supervisord.conf /etc/supervisord.conf
 
 # Build arguments
 ARG BUILD_ARCH
@@ -62,7 +62,3 @@ LABEL \
     org.label-schema.vcs-ref=${BUILD_REF} \
     org.label-schema.vcs-url="https://github.com/alryaz/addon-octoprint" \
     org.label-schema.vendor="Home Assistant Community Add-ons"
-
-EXPOSE 5000
-WORKDIR /
-CMD [ "/run.sh" ]
