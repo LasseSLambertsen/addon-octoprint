@@ -39,7 +39,7 @@
             "folder": {
                  "timelapse": "/config/octoprint/timelapse",
                  "uploads": "/config/octoprint/uploads",
-                 "watched": "/config/octoprint/watched",
+                 "watched": "/config/octoprint/watched"
             },
             "plugins": {
                 "pluginmanager": {
@@ -54,5 +54,5 @@
             }
         }
     },
-    "schema": {},
+    "schema": {}
 }
