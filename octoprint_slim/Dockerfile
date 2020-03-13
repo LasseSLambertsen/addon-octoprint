@@ -39,6 +39,23 @@ COPY run.sh /
 RUN chmod a+x /run.sh
 COPY supervisord.conf /etc/supervisord.conf
 
+LABEL \
+    io.hass.name="OctoPrint (Slim)" \
+    io.hass.description="A web frontend for controlling 3D printers." \
+    io.hass.arch="${BUILD_ARCH}" \
+    io.hass.type="addon" \
+    io.hass.version=${BUILD_VERSION} \
+    maintainer="Alexander Ryazanov <alryaz@xavux.com>" \
+    org.label-schema.description="A web frontend for controlling 3D printers." \
+    org.label-schema.build-date=${BUILD_DATE} \
+    org.label-schema.name="OctoPrint (Slim)" \
+    org.label-schema.schema-version="1.0" \
+    org.label-schema.url="" \
+    org.label-schema.usage="https://github.com/alryaz/addon-octoprint/tree/master/README.md" \
+    org.label-schema.vcs-ref=${BUILD_REF} \
+    org.label-schema.vcs-url="https://github.com/alryaz/addon-octoprint" \
+    org.label-schema.vendor="Home Assistant Community Add-ons"
+
 EXPOSE 5000
 WORKDIR /
 CMD [ "/run.sh" ]
