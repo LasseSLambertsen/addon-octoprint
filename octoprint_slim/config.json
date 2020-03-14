@@ -1,6 +1,6 @@
 {
     "name": "Octoprint Slim",
-    "version": "dev-6",
+    "version": "dev-7",
     "slug": "octoprint-slim",
     "description": "Octoprint add-on for Hass.io, slimmed version (untested)",
     "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],

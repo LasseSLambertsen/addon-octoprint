@@ -29,13 +29,13 @@ fi
 
 ingress_port=$(bashio::addon.ingress_port)
 ingress_interface=$(bashio::addon.ip_address)
-ingress_entry=$(bashio::addon.ingress_entry)
+ingress_url=$(bashio::addon.ingress_url)
 
 bashio::log.info "Ingress entry URL: ${ingress_entry}"
 
 sed -i "s#%%port%%#${ingress_port}#g" /etc/nginx/servers/ingress.conf
 sed -i "s#%%interface%%#${ingress_interface}#g" /etc/nginx/servers/ingress.conf
-sed -i "s#%%base_path%%#${ingress_entry}#g" /etc/nginx/servers/ingress.conf
+sed -i "s#%%base_path%%#${ingress_url}#g" /etc/nginx/servers/ingress.conf
 
 dns_host=$(bashio::dns.host)
 sed -i "s#%%dns_host%%#${dns_host}#g" /etc/nginx/includes/resolver.conf
