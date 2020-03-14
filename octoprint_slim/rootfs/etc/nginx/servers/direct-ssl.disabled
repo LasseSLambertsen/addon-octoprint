@@ -1,5 +1,5 @@
 server {
-    listen 80 default_server ssl http2;
+    listen 5000 default_server ssl http2;
 
     include /etc/nginx/includes/server_params.conf;
     include /etc/nginx/includes/ssl_params.conf;
@@ -10,6 +10,7 @@ server {
     ssl_certificate_key /ssl/%%keyfile%%;
 
     location / {
+        proxy_set_header X-Scheme "https";
         proxy_pass http://backend;
     }
 }

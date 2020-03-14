@@ -19,4 +19,4 @@ copy_data
 jq ".options.octoprint" /data/options.json > /data/octoprint.json
 
 # Start OctoPrint server
-octoprint serve --iknowwhatimdoing --basedir /data --config /data/octoprint.json --host 0.0.0.0 --port 5000
+octoprint serve --iknowwhatimdoing --basedir /data --config /data/octoprint.json --host 127.0.0.1 --port 5000
