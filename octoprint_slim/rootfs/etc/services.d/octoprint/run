@@ -5,9 +5,6 @@
 # ==============================================================================
 bashio::log.info "Run OctoPrint (Slim).."
 
-cd /opt/panel \
-    || bashio::exit.nok "Could not change into app directory"
-
 copy_data() {
     if [ ! -d /data/python ]; then
         bashio::log.info "Copy authentication information"
