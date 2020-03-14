@@ -31,7 +31,7 @@ ingress_port=$(bashio::addon.ingress_port)
 ingress_interface=$(bashio::addon.ip_address)
 ingress_url=$(bashio::addon.ingress_url)
 
-bashio::log.info "Ingress entry URL: ${ingress_entry}"
+bashio::log.info "Ingress entry URL: ${ingress_url}"
 
 sed -i "s#%%port%%#${ingress_port}#g" /etc/nginx/servers/ingress.conf
 sed -i "s#%%interface%%#${ingress_interface}#g" /etc/nginx/servers/ingress.conf
