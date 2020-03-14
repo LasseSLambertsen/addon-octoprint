@@ -1,5 +1,5 @@
 {
-  "name": "HASS.IO add-on repository by fredrikbaberg",
-  "url": "https://github.com/arisonpl/hassio-addons",
-  "maintainer": "Fredrik Baberg"
+  "name": "OctoPrint addon variations for Hass.io",
+  "url": "https://github.com/alryaz/addon-octoprint",
+  "maintainer": "Alexander Ryazanov <alryaz@xavux.com>"
 }
