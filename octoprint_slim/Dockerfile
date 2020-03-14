@@ -18,7 +18,7 @@ COPY rootfs /
 WORKDIR /tmp
 
 # Install requirements for add-on
-RUN apk add --no-cache jq py-pip \
+RUN apk add --no-cache jq py-pip nginx=1.16.1-r6 openssl=1.1.1d-r3 \
     && \
     # Get code for installation, install.
     wget -qO- https://github.com/foosel/OctoPrint/archive/${OCTOPRINT_VERSION}.tar.gz | tar xz \
