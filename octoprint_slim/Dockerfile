@@ -23,6 +23,9 @@ RUN apk add --no-cache jq py-pip nginx=1.16.1-r6 openssl=1.1.1d-r3 \
     # Get code for installation, install.
     wget -qO- https://github.com/foosel/OctoPrint/archive/${OCTOPRINT_VERSION}.tar.gz | tar xz \
     && \
+    # (DEVELOPMENT ONLY) Add `nano` editor
+    apk add --no-cache nano \
+    && \
     # Compile and install
     apk add --no-cache --virtual .build-dependencies \
     build-base python-dev linux-headers \
